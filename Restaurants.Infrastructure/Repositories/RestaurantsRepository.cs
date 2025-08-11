@@ -30,5 +30,8 @@ internal class RestaurantsRepository(RestaurantsDbContext dbContext)
         await dbContext.SaveChangesAsync();
     }
 
+    public Task SaveChanges()
+     => dbContext.SaveChangesAsync();
+
 
 }
