@@ -12,8 +12,8 @@ public class CreateDishCommandHandler(ILogger<CreateDishCommandHandler> logger,
 	IDishesRepository dishesRepository,
 	IMapper mapper) : IRequestHandler<CreateDishCommand>
 {
-	public async Task Handle(CreateDishCommand request, CancellationToken cancellationToken)
-	{
+    public async Task<int> Handle(CreateDishCommand request, CancellationToken cancellationToken)
+    {
 		logger.LogInformation("Creating new dish: {@DishRequest}", request);
 		var restaurant = await restaurantsRepository.GetByIdAsync(request.RestaurantId);
 		if (restaurant == null) throw new NotFoundException(nameof(Restaurant), request.RestaurantId.ToString());
